@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">DAMII_EXO_LucianoBacab</string>
+
+    <string name="Inv">Inventarios</string>
+    <string name="Ven">Ventas</string>
+    <string name="Salir">Salir</string>
+    <string name="Insertar">Insertar</string>
+    <string name="Consulta">Buscar</string>
+    <string name="Modificar">Modificar</string>
+    <string name="Eliminar">Eliminar</string>
+
+    <string name="idInven">ID Inventario</string>
+
+    <string-array name="Productos">
+        <item>Seleccionar Producto</item>
+        <item>Xiaomi Black Shark 4</item>
+        <item>ZTE Nubia Red Magic 4</item>
+        <item>Xiaomi Poco F5</item>
+        <item>Xiaomi 12x</item>
+        <item>Xiaomi Poco M5s</item>
+        <item>Xiaomi 11T Pro</item>
+        <item>Xiaomi Poco X5 Pro</item>
+    </string-array>
+
+    <string name="Precio">Precio</string>
+    <string name="Cantidad">Cantidad</string>
+
+</resources>

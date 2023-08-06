@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Inventarios">
+
+    <TextView
+        android:id="@+id/tvInventarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Inv"
+        android:textColor="@color/Negro"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etIdInv"
+        android:layout_width="135dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/idInven"
+        android:inputType="number"
+        android:textColor="@color/Negro"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInventarios" />
+
+    <Spinner
+        android:id="@+id/spnProducto"
+        android:layout_width="321dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:entries="@array/Productos"
+        android:textColor="@color/Rojo1"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etIdInv" />
+
+    <EditText
+        android:id="@+id/etPrecio"
+        android:layout_width="269dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/Precio"
+        android:inputType="numberDecimal"
+        android:textColor="@color/Negro"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnProducto" />
+
+    <EditText
+        android:id="@+id/etCantidad"
+        android:layout_width="269dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/Cantidad"
+        android:inputType="number"
+        android:textColor="@color/Negro"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPrecio" />
+
+    <ImageView
+        android:id="@+id/ivProducto"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCantidad"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnInsertar"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/Insertar"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivProducto" />
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/Eliminar"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/btnModificar"
+        app:layout_constraintTop_toBottomOf="@+id/btnBuscar" />
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="120dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/Consulta"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toEndOf="@+id/btnInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/ivProducto" />
+
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/Modificar"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertar" />
+
+    <Button
+        android:id="@+id/btnSalir2"
+        android:layout_width="115dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/Salir"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintStart_toEndOf="@+id/btnEliminar"
+        app:layout_constraintTop_toBottomOf="@+id/btnBuscar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

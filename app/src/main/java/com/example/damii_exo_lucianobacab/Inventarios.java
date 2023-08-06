@@ -44,6 +44,7 @@ public class Inventarios extends AppCompatActivity {
 
         //Creacion de objeto de enlace a las base de datos
         Inventario oper1 = new Inventario(this, "operacion2", null, 1);
+        //Arreglo que almacena los productos para luego ser consultados
         elementos = new ArrayList<>();
         elementos.add("Seleccionar Producto");
         elementos.add("Xiaomi Black Shark 4");
@@ -64,6 +65,7 @@ public class Inventarios extends AppCompatActivity {
 
                 if (position == 0) {
                     Toast.makeText(parent.getContext(), parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+                    ivProducto.setVisibility(View.INVISIBLE);
                 } else if (position == 1) {
                     ivProducto.setImageResource(R.drawable.blackshark);
                     Imag = BitmapFactory.decodeResource(getResources(), R.drawable.blackshark);
@@ -136,6 +138,8 @@ public class Inventarios extends AppCompatActivity {
                     etIdInv.setHint("ID Inventario");
                     etPrecio.setHint("Precio");
                     etCantidad.setHint("Cantidad");
+                    int posicion = 0;
+                    spnProducto.setSelection(posicion);
                     ivProducto.setVisibility(View.INVISIBLE);
 
                     Toast.makeText(getApplicationContext(), "Producto Registrado Exitosamente!", Toast.LENGTH_SHORT).show();
@@ -180,7 +184,90 @@ public class Inventarios extends AppCompatActivity {
             }
         });
 
+        //Boton para Modificar Productos
+        btnModificar = (Button) findViewById(R.id.btnModificar);
+        btnModificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase OrdinarioBD = oper1.getWritableDatabase();
 
+                String idInven = etIdInv.getText().toString();
+                String producto = spnProducto.getSelectedItem().toString();
+                String precio = etPrecio.getText().toString();
+                String cantidad = etCantidad.getText().toString();
+                byte[] imagen = getBytesFromBitmap(Imag);
+
+                if(!idInven.isEmpty() && !precio.isEmpty() && !cantidad.isEmpty()) {
+                    ContentValues mod = new ContentValues();
+                    mod.put("id", idInven);
+                    mod.put("nombre", producto);
+                    mod.put("precio", precio);
+                    mod.put("cantidad", cantidad);
+                    mod.put("imagen", imagen);
+
+                    int cantidadmod = OrdinarioBD.update("productos", mod, "id = " + idInven, null);
+                    OrdinarioBD.close();
+
+                    etIdInv.setText("");
+                    etPrecio.setText("");
+                    etCantidad.setText("");
+
+                    etIdInv.setHint("ID Inventario");
+                    etPrecio.setHint("Precio");
+                    etCantidad.setHint("Cantidad");
+                    int posicion = 0;
+                    spnProducto.setSelection(posicion);
+                    ivProducto.setVisibility(View.INVISIBLE);
+
+                    if (cantidadmod == 1){
+                        Toast.makeText(getApplicationContext(), "Producto Modificado Exitosamente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Producto no Existe", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Introduzca el id del Producto", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        //Boton para Eliminar Reservaciones
+        btnEliminar = (Button) findViewById(R.id.btnEliminar);
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase OrdinarioBD = oper1.getWritableDatabase();
+                String idInven = etIdInv.getText().toString();
+
+                if(!idInven.isEmpty()) {
+                    int cantidad = OrdinarioBD.delete("productos", "id = " + idInven, null);
+                    OrdinarioBD.close();
+
+                    etIdInv.setText("");
+                    etPrecio.setText("");
+                    etCantidad.setText("");
+
+                    etIdInv.setHint("ID Inventario");
+                    etPrecio.setHint("Precio");
+                    etCantidad.setHint("Cantidad");
+                    int posicion = 0;
+                    spnProducto.setSelection(posicion);
+                    ivProducto.setVisibility(View.INVISIBLE);
+
+                    if (cantidad == 1){
+                        Toast.makeText(getApplicationContext(), "Producto Eliminado Exitosamente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Producto no Existe", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Introduzca el id del Producto", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         //Boton para regresar al menu principal
         btnSalir2 = (Button) findViewById(R.id.btnSalir2);

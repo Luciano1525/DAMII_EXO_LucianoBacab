@@ -1,19 +1,29 @@
 package com.example.damii_exo_lucianobacab;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ventas extends AppCompatActivity {
     private ListView lvProductos;
+    private List<DatosTabla> listaDeDatosTabla;
+    private Button btnVentas1, btnSalir3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +39,72 @@ public class Ventas extends AppCompatActivity {
         TuAdaptador adaptador = new TuAdaptador(this, listaDeDatosTabla);
         lvProductos.setAdapter(adaptador);
 
+        //Funcion de click del ListView
+        lvProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(parent.getContext(), "Producto Seleccionado: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+                DatosTabla selectedItem = listaDeDatosTabla.get(position);
+
+                String Nombre = selectedItem.getTvNombre();
+                String Precio1 = selectedItem.getTvPreci();
+                //Dividir el String y recuperar solo el precio
+                String[] partes = Precio1.split(" ");
+                String Signo = partes[0]; // Primera palabra
+                String Precio = partes[1]; // Segunda palabra
+                String Cantidad = selectedItem.getTvCant();
+                int Imagen = selectedItem.getIvProduc();
+                Toast.makeText(Ventas.this, "Marca: " + Nombre + "\nPrecio: " + Precio + "\nExistencias: " + Cantidad, Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder res = new AlertDialog.Builder(Ventas.this);
+                res.setTitle("Vender");
+                View select = getLayoutInflater().inflate(R.layout.compra, null);
+                res.setView(select);
+                res.setCancelable(false);
+
+                res.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = res.create();
+                dialog.show();
+
+            }
+        });
+
+        //Boton para regresar al menu principal
+        btnSalir3 = (Button) findViewById(R.id.btnSalir3);
+        btnSalir3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Menu Principal", Toast.LENGTH_SHORT).show();
+                Log.i("INFO:", "Volver");
+                Intent intent = new Intent(Ventas.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     // Método para obtener los registros de la tabla de SQLite y crear la lista de objetos DatosTabla
     private List<DatosTabla> obtenerRegistrosDeTabla() {
-        List<DatosTabla> listaDeDatosTabla = new ArrayList<>();
+        listaDeDatosTabla = new ArrayList<>();
 
-        // Aquí debes realizar la consulta a la base de datos y obtener los datos de cada fila.
-        // Por ejemplo:
         //Creacion de objeto de enlace a las base de datos
         Inventario oper1 = new Inventario(this, "operacion2", null, 1);
         SQLiteDatabase OrdinarioBD = oper1.getWritableDatabase();
-        //SQLiteDatabase OrdinarioBD = dbHelper.getReadableDatabase();
         Cursor cursor = OrdinarioBD.rawQuery("select nombre, precio, cantidad from productos", null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
 
                 //byte[] imagenBlob = cursor.getBlob(cursor.getColumnIndex("imagen"));
                 String nombre = cursor.getString(0);
-                String precio = cursor.getString(1);
+                String precio1 = cursor.getString(1);
+                String precio = "$ " + precio1;
                 String cantidad = cursor.getString(2);
 
                 if (nombre.equals("Xiaomi Black Shark 4")){
@@ -94,53 +151,6 @@ public class Ventas extends AppCompatActivity {
 
         // Retorna la lista de objetos DatosTabla
         return listaDeDatosTabla;
-    }
-
-
-/*
-    private List<DatosTabla> GetData1(){
-        lst = new ArrayList<>();
-
-        //Creacion de objeto de enlace a las base de datos
-        Inventario oper1 = new Inventario(this, "operacion2", null, 1);
-        SQLiteDatabase OrdinarioBD = oper1.getWritableDatabase();
-        Cursor fila = OrdinarioBD.rawQuery("select imagen, nombre, precio, cantidad from productos", null);
-
-        // Recorrer el cursor y crear las filas y columnas en el TableLayout
-        if (fila.moveToFirst()) {
-            do {
-                int fila1 = -1;
-                fila1 = fila1 + 1;
-                byte[] imageData = fila.getBlob(0);
-                int valorEntero = byteArrayToInt(imageData);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
-                String Nombre = fila.getString(1);
-                String Precio = fila.getString(2);
-                String Cantidad = fila.getString(3);
-
-                lst.add(new DatosTabla(fila1, valorEntero, Nombre, Precio, Cantidad));
-
-            } while (fila.moveToNext());
-        }
-
-        // Cerrar el cursor y la base de datos
-        fila.close();
-        OrdinarioBD.close();
-
-        return lst;
-    }
-*/
-
-    public static int byteArrayToInt(byte[] bytes) {
-        if (bytes.length < 4) {
-            throw new IllegalArgumentException("El arreglo de bytes debe tener al menos 4 bytes para convertirse a int.");
-        }
-
-        int value = 0;
-        for (int i = 0; i < 4; i++) {
-            value |= (bytes[i] & 0xFF) << (i * 8);
-        }
-        return value;
     }
 
 

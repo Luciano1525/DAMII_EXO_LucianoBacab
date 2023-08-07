@@ -10,6 +10,9 @@
     <string name="Eliminar">Eliminar</string>
 
     <string name="idInven">ID Inventario</string>
+    <string name="idVen">ID Venta</string>
+    <string name="Marca">Marca</string>
+    <string name="Importe">Importe</string>
 
     <string-array name="Productos">
         <item>Seleccionar Producto</item>

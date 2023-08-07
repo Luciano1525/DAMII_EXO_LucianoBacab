@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/vseparadori"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_margin="5sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tvIdVenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="ID Venta"
+        android:textColor="@color/Amarillo"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/etIdVenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="24sp"
+        android:inputType="text"
+        android:hint="@string/idVen"
+        android:textColor="@color/Negro"
+        android:textStyle="bold"
+        />
+
+    <View
+        android:id="@+id/separador1"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_margin="5sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tvMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Producto"
+        android:textColor="@color/Amarillo"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/etMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="24sp"
+        android:inputType="text"
+        android:hint="@string/Marca"
+        android:textColor="@color/Negro"
+        android:textStyle="bold"
+        />
+
+    <View
+        android:id="@+id/separador2"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_margin="5sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tvCantidadS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cantidad"
+        android:textColor="@color/Amarillo"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/separadorp"
+            android:layout_width="78dp"
+            android:layout_height="1dp"
+            android:layout_margin="1sp"
+            android:visibility="invisible"
+            android:orientation="horizontal"
+            />
+
+        <Button
+            android:id="@+id/btnResta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="@color/Rojo1"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            />
+
+        <View
+            android:id="@+id/separadorr"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:layout_margin="1sp"
+            android:visibility="invisible"
+            android:orientation="horizontal"
+            />
+
+        <TextView
+            android:id="@+id/tvCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="0"
+            android:textColor="@color/Amarillo"
+            android:textStyle="bold"
+            />
+
+        <View
+            android:id="@+id/separadors"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:layout_margin="1sp"
+            android:visibility="invisible"
+            android:orientation="horizontal"
+            />
+
+        <Button
+            android:id="@+id/btnSuma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textColor="@color/Rojo1"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvImporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Importe"
+        android:textColor="@color/Amarillo"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/etImporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="24sp"
+        android:inputType="text"
+        android:hint="@string/Importe"
+        android:textColor="@color/Negro"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

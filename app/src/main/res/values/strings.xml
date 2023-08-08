@@ -28,4 +28,6 @@
     <string name="Precio">Precio</string>
     <string name="Cantidad">Cantidad</string>
 
+    <string name="Compras">Compras</string>
+
 </resources>

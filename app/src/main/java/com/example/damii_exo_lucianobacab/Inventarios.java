@@ -65,7 +65,8 @@ public class Inventarios extends AppCompatActivity {
 
                 if (position == 0) {
                     Toast.makeText(parent.getContext(), parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
-                    ivProducto.setVisibility(View.INVISIBLE);
+                    ivProducto.setImageResource(R.drawable.blanco);
+                    Imag = BitmapFactory.decodeResource(getResources(), R.drawable.blanco);
                 } else if (position == 1) {
                     ivProducto.setImageResource(R.drawable.blackshark);
                     Imag = BitmapFactory.decodeResource(getResources(), R.drawable.blackshark);

@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:textSize="24sp"
-        android:inputType="text"
+        android:inputType="number"
         android:hint="@string/idVen"
         android:textColor="@color/Negro"
         android:textStyle="bold"
@@ -93,28 +93,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <View
-            android:id="@+id/separadorp"
-            android:layout_width="78dp"
-            android:layout_height="1dp"
-            android:layout_margin="1sp"
-            android:visibility="invisible"
-            android:orientation="horizontal"
-            />
-
         <Button
             android:id="@+id/btnResta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="—"
             android:textColor="@color/Rojo1"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             />
 
         <View
             android:id="@+id/separadorr"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_margin="1sp"
             android:visibility="invisible"
@@ -125,7 +116,7 @@
             android:id="@+id/tvCantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
+            android:textSize="35sp"
             android:text="0"
             android:textColor="@color/Amarillo"
             android:textStyle="bold"
@@ -133,7 +124,7 @@
 
         <View
             android:id="@+id/separadors"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_margin="1sp"
             android:visibility="invisible"
@@ -142,13 +133,43 @@
 
         <Button
             android:id="@+id/btnSuma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="+"
             android:textColor="@color/Rojo1"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             />
+
+        <View
+            android:id="@+id/separadorss"
+            android:layout_width="10dp"
+            android:layout_height="1dp"
+            android:layout_margin="1sp"
+            android:visibility="invisible"
+            android:orientation="horizontal"
+            />
+
+        <TextView
+            android:id="@+id/tvSigno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="$ "
+            android:textColor="@color/Amarillo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="00.0"
+            android:textColor="@color/Amarillo"
+            android:textStyle="bold"
+            />
+
     </LinearLayout>
 
     <TextView
@@ -167,7 +188,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:textSize="24sp"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:hint="@string/Importe"
         android:textColor="@color/Negro"
         android:textStyle="bold"
